@@ -1,6 +1,7 @@
 const signinModel = require("../model/signinModel");
 const adminModel = require("../model/erpModel");
 const userModel = require("../model/userModel");
+const hrModel = require("../model/hrModel");
 
 const login = async (req, res) => {
   try {
@@ -49,4 +50,20 @@ const userDetails = async (req, res) => {
   }
 };
 
-module.exports = { login, adminDetails, userDetails };
+const hrDetails = async (req, res) => {
+  try {
+    const hrdetail = await hrModel.findOne(
+      { email: req.body.email },
+      { fName: 1, lName: 1, email: 1 }
+    );
+    if (!hrdetail) {
+      res.status(400).send("No details found");
+    } else {
+      res.status(200).send(hrdetail);
+    }
+  } catch (error) {
+    res.status(500).send(error);
+  }
+};
+
+module.exports = { login, adminDetails, userDetails, hrDetails };

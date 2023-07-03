@@ -4,6 +4,7 @@ const Add = async (req, res) => {
   try {
     const leaveDetails = new leaveModel({
       fullName: req.body.fullName,
+      email: req.body.email,
       reason: req.body.reason,
       leaveDate: req.body.leaveDate,
     });

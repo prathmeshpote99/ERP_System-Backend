@@ -5,6 +5,10 @@ const leaveSheama = new mongoose.Schema({
     type: String,
     require: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   reason: {
     type: String,
     require: true,

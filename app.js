@@ -14,6 +14,9 @@ app.use(cors());
 const erpRouter = require("./route/erpRoute");
 app.use("/erp", erpRouter);
 
+const hrRouter = require("./route/hrRoute");
+app.use("/hr", hrRouter);
+
 const loginController = require("./controller/loginController");
 app.post("/login", loginController.login);
 
@@ -40,6 +43,9 @@ app.use("/details", detailRouter);
 
 const salaryslipRouter = require("./route/salarySlipRouter");
 app.use("/salaryslip", salaryslipRouter);
+
+const leaveDayRouter = require("./route/approvalStatusRouter");
+app.use("/approval", leaveDayRouter);
 
 app.listen(7080, () => {
   console.log("Server Running");
